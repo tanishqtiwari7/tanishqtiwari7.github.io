@@ -1,34 +1,34 @@
 const projectlists = [
   {
-    name: "Chocolate Milk",
+    name: "Codeboard",
     color: "brown",
-    rotation: "md:rotate-[-8deg] rotate-0",
+    rotation: "md:rotate-0 rotate-0",
   },
+  // {
+  //   name: "Stawberry Milk",
+  //   color: "red",
+  //   rotation: "md:rotate-[8deg] rotate-0",
+  // },
   {
-    name: "Stawberry Milk",
-    color: "red",
-    rotation: "md:rotate-[8deg] rotate-0",
-  },
-  {
-    name: "Cookies & Cream",
+    name: "Dekstop-ToDo-App",
     color: "blue",
     rotation: "md:rotate-[-8deg] rotate-0",
   },
+  // {
+  //   name: "Peanut Butter Chocolate",
+  //   color: "orange",
+  //   rotation: "md:rotate-[8deg] rotate-0",
+  // },
   {
-    name: "Peanut Butter Chocolate",
-    color: "orange",
-    rotation: "md:rotate-[8deg] rotate-0",
-  },
-  {
-    name: "Vanilla Milkshake",
+    name: "Yet to Decide",
     color: "white",
     rotation: "md:rotate-[-8deg] rotate-0",
   },
-  {
-    name: "Max Chocolate Milk",
-    color: "black",
-    rotation: "md:rotate-[8deg] rotate-0",
-  },
+  // {
+  //   name: "Max Chocolate Milk",
+  //   color: "black",
+  //   rotation: "md:rotate-[8deg] rotate-0",
+  // },
 ];
 
 const nutrientLists = [

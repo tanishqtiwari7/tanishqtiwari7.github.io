@@ -7,7 +7,7 @@ const HeroSection = () => {
     // Wait for fonts to load before creating SplitText
     gsap.delayedCall(0.3, () => {
       const nameSplit = SplitText.create(".hero-title", { type: "chars" });
-      const tl = gsap.timeline({ delay: 0.3 });
+      const tl = gsap.timeline({ delay: 1 });
 
       tl.to(".hero-content", {
         opacity: 1,
@@ -17,7 +17,8 @@ const HeroSection = () => {
         .to(
           ".hero-text-scroll",
           {
-            delay: 0.1,
+            duration:1,
+            // delay: 0.1,
             clipPath: "polygon(100% 0, 0% 0, 0% 100%, 100% 100%)",
             ease: "circ.inOut",
           },
@@ -44,8 +45,8 @@ const HeroSection = () => {
     });
     hero_tl.to(".hero-container", {
       rotate: 7,
-      scale: 0.8,
-      yPercent: 40,
+      scale: 0.9,
+      yPercent: 30,
       ease: "power1.inOut",
     });
   });
@@ -53,13 +54,14 @@ const HeroSection = () => {
   return (
     <section className="bg-main-bg">
       <div className="hero-container">
-        <div className="hero-content opacity-0">
+        <div className="hero-content opacity-0 md:mt-10">
           <div className="overflow-hidden">
             <h1 className="hero-title">Tanishq Tiwari</h1>
           </div>
           <div
             style={{
               clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
+         
             }}
             className="hero-text-scroll"
           >
@@ -67,7 +69,7 @@ const HeroSection = () => {
               <h1>Giga-Developer</h1>
             </div>
           </div>
-          <h2>
+          <h2 className="md:mt-10">
             I'm a developer who loves turning ideas into little
             experiments—sometimes they're websites, sometimes tools, sometimes
             just fun console stuff. Coding, for me, is where art and play meet.
