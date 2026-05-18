@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@400..700&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --ink: #0f1012;
+    --muted: #585c64;
+    --border: #e6e7ea;
+    --soft: #f6f6f7;
+    --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.08);
+    --shadow-float: 0 16px 36px rgba(0, 0, 0, 0.12);
+    --pico-yellow: #f7c84b;
+    --pico-blue: #87b8ff;
+    --pico-pink: #f3a3ba;
+    --pico-green: #9be2a1;
+    --pico-purple: #cdb7ff;
+    --pico-gray: #d9d9d9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: #ffffff;
+    letter-spacing: -0.01em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  section {
+    scroll-margin-top: 120px;
+  }
+}
+
+@layer utilities {
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .border-soft {
+    border-color: var(--border);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-float {
+    box-shadow: var(--shadow-float);
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 8px 6px;
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: -6px;
+    height: 2px;
+    background: #111111;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link[data-active="true"] {
+    color: #111111;
+  }
+
+  .nav-link:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 6px;
+    border-radius: 999px;
+  }
+
+  .nav-link:hover::after,
+  .nav-link[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .font-caveat {
+    font-family: "Caveat", "Segoe UI", cursive;
+  }
+
+  .font-hero {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-caprasimo {
+    font-family: "Caprasimo", "Poppins", system-ui, sans-serif;
+  }
+
+  .checker-grid {
+    background-image:
+      linear-gradient(to right, rgba(15, 16, 18, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 16, 18, 0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center;
+  }
+
+  .checker-grid-fade {
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 14%,
+      black 86%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 14%,
+      black 86%,
+      transparent 100%
+    );
+  }
+
+  .pico-sprite {
+    --pico-size: 26px;
+    width: var(--pico-size);
+    height: var(--pico-size);
+    border-radius: 7px;
+    background: var(--pico-color, var(--pico-yellow));
+    border: 2px solid #111111;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .pico-sprite--sm {
+    --pico-size: 22px;
+  }
+
+  .pico-sprite--xs {
+    --pico-size: 16px;
+  }
+
+  .pico-sprite--lg {
+    --pico-size: 34px;
+  }
+
+  .pico-eyes {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .pico-eye {
+    width: 4px;
+    height: 4px;
+    background: #111111;
+    border-radius: 1px;
+    animation: pico-blink 6s infinite;
+  }
+
+  @keyframes pico-blink {
+    0%,
+    92%,
+    100% {
+      transform: scaleY(1);
+    }
+    94% {
+      transform: scaleY(0.1);
+    }
+  }
+
+  .hero-sprite-layer {
+    pointer-events: none;
+  }
+
+  .hero-sprite-float {
+    animation: hero-float var(--float-duration, 6s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+
+  .hero-sprite {
+    pointer-events: auto;
+    display: inline-flex;
+  }
+
+  .hero-sprite-inner {
+    transform-origin: center;
+  }
+
+  .hero-sprite:hover .hero-sprite-inner {
+    animation: hero-wiggle 0.6s ease-in-out infinite;
+  }
+
+  .hero-sprite .pico-eye {
+    animation: none;
+  }
+
+  .hero-sprite:hover .pico-eye {
+    animation: pico-blink 1.2s infinite;
+  }
+
+  .current-sprite-cluster {
+    pointer-events: auto;
+  }
+
+  .current-sprite {
+    position: absolute;
+    display: inline-flex;
+    transform-origin: center;
+  }
+
+  .current-sprite .pico-eye {
+    animation: none;
+  }
+
+  .current-sprite:hover .pico-eye {
+    animation: pico-blink 1.2s infinite;
+  }
+
+  .current-sprite:hover .current-sprite-inner {
+    animation: hero-wiggle 0.6s ease-in-out infinite;
+  }
+
+  @keyframes hero-float {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    35% {
+      transform: translate3d(var(--float-x), calc(var(--float-y) * -1), 0)
+        rotate(var(--float-rotate));
+    }
+    70% {
+      transform: translate3d(calc(var(--float-x) * -1), var(--float-y), 0)
+        rotate(calc(var(--float-rotate) * -1));
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+  }
+
+  @keyframes hero-wiggle {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate3d(1px, -2px, 0) rotate(7deg);
+    }
+    50% {
+      transform: translate3d(-1px, 1px, 0) rotate(-7deg);
+    }
+    75% {
+      transform: translate3d(1px, 0, 0) rotate(4deg);
+    }
+  }
+
+  .project-sprite {
+    display: inline-flex;
+    transform-origin: center;
+  }
+
+  .project-card:hover .project-sprite {
+    animation: project-wiggle 0.6s ease-in-out infinite;
+  }
+
+  .project-card:hover .project-sprite .pico-eye {
+    animation: pico-blink 1.2s infinite;
+  }
+
+  @keyframes project-wiggle {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate3d(1px, -2px, 0) rotate(7deg);
+    }
+    50% {
+      transform: translate3d(-1px, 1px, 0) rotate(-7deg);
+    }
+    75% {
+      transform: translate3d(1px, 0, 0) rotate(4deg);
+    }
+  }
+
+  .puzzle-card {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: var(--shadow-soft);
+    overflow: visible;
+  }
+
+  .puzzle-card::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    width: 26px;
+    height: 26px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .cert-track {
+    scroll-snap-type: x mandatory;
+  }
+
+  .cert-card {
+    scroll-snap-align: start;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  ::selection {
+    background: pink;
+  }
+}
